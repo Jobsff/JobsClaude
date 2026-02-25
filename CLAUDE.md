@@ -175,7 +175,28 @@ brainstorming → writing-plans → executing-plans
 
 ### 语言/框架特定
 
-*（暂无记录，随着开发积累逐步填充）*
+#### SQLite 并发访问
+```python
+# ❌ 错误：多线程/异步环境下可能导致锁定超时
+conn = sqlite3.connect('db.sqlite3')
+
+# ✅ 正确：设置超时参数
+conn = sqlite3.connect('db.sqlite3', timeout=30)
+
+# ✅ 更好：使用 WAL 模式允许并发读写
+conn.execute("PRAGMA journal_mode=WAL")
+```
+**场景**：asyncio 线程、多进程、Streamlit 并发请求
+
+#### Python 3.12 datetime 兼容性
+```python
+# ❌ 错误：Python 3.12 中直接传 datetime 对象有弃用警告
+cursor.execute('... VALUES (?, ?)', (id, datetime.now()))
+
+# ✅ 正确：转为 ISO 格式字符串
+cursor.execute('... VALUES (?, ?)', (id, datetime.now().isoformat()))
+```
+**原因**：Python 3.12 的 sqlite3 模块弃用了默认的 datetime 适配器
 
 ---
 
@@ -189,6 +210,7 @@ brainstorming → writing-plans → executing-plans
 
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
+| 2026-02-25 | v1.3.0 | 新增 SQLite 并发访问、Python 3.12 datetime 兼容性经验 |
 | 2026-02-25 | v1.2.0 | 新增"Skill 技能优先"原则和详细技能速查表 |
 | 2026-02-25 | v1.1.0 | 简化流程，兼容现有 skills，新增 /up /dn 命令 |
 | 2026-02-25 | v1.0.0 | 初始化全局经验库 |
