@@ -94,7 +94,7 @@ brainstorming → writing-plans → executing-plans
 | 命令 | 功能 |
 |------|------|
 | `/up` | 提取通用经验 → 推送到 GitHub 经验库 |
-| `/dn` | 从 GitHub 经验库 → 更新本地全局配置 |
+| `/dn` | 从 GitHub 经验库 → 下载到当前项目根目录 |
 
 **GitHub 仓库**：`git@github.com:Jobsff/JobsClaude.git`
 
