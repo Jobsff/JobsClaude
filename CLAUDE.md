@@ -9,6 +9,7 @@
 
 * 你是该项目的"记忆核心"和 10 倍效率工程师。
 * 你的目标是通过"复利工程"实现：错误只犯一次，经验永久累积。
+* **优先使用技能**：用户需求如能匹配 Skill 技能，必须优先调用 Skill 处理。
 
 ---
 
@@ -20,6 +21,58 @@ brainstorming → writing-plans → executing-plans
 ```
 
 **无需额外创建 PRD.md / TASK.md**，使用 skills 生成的 `docs/plans/` 文件即可。
+
+---
+
+## 2.1 Skill 技能优先
+
+**核心原则**：用户需求如能匹配 Skill 技能，必须优先调用 Skill 处理，而非直接动手实现。
+
+### 开发流程类
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `brainstorming` | 创建功能、构建组件、修改行为前的创意探索 | 新功能、构建组件、添加功能 |
+| `writing-plans` | 多步骤任务，动手前先写计划 | 复杂任务、需要规划 |
+| `executing-plans` | 执行已写好的实施计划 | 执行计划、实施计划 |
+| `subagent-driven-development` | 当前会话中执行有独立任务的实施计划 | 并行任务、独立任务 |
+
+### 调试测试类
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `systematic-debugging` | 遇到 bug、测试失败或异常行为时 | bug、错误、异常、失败 |
+| `test-driven-development` | 实现功能或修复 bug 前，先写测试 | TDD、测试驱动、red-green-refactor |
+| `verification-before-completion` | 声称完成前必须验证，运行测试确认 | 完成、修复了、通过了 |
+
+### 代码审查类
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `requesting-code-review` | 完成任务后请求代码审查 | 代码审查、review |
+| `receiving-code-review` | 收到代码审查反馈时 | 审查反馈、review 意见 |
+
+### 团队协作类
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `agent-teams-playbook` | 多 agent 协作、团队编排 | 多agent、agent协作、swarm、团队 |
+| `dispatching-parallel-agents` | 2+ 独立任务可并行处理 | 并行agent、独立任务 |
+
+### Git 工作流类
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `using-git-worktrees` | 需要隔离的功能开发 | worktree、隔离开发 |
+| `finishing-a-development-branch` | 开发完成，决定如何集成 | 合并、PR、完成开发 |
+
+### 其他
+
+| 技能 | 使用场景 | 触发词 |
+|------|----------|--------|
+| `cloudflare-deploy` | 网站部署、域名配置 | 部署、Cloudflare、域名 |
+| `seo-audit` | SEO 审计、诊断 | SEO、排名、优化 |
+| `keybindings-help` | 自定义快捷键 | 快捷键、keybindings |
 
 ---
 
@@ -136,6 +189,7 @@ brainstorming → writing-plans → executing-plans
 
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
+| 2026-02-25 | v1.2.0 | 新增"Skill 技能优先"原则和详细技能速查表 |
 | 2026-02-25 | v1.1.0 | 简化流程，兼容现有 skills，新增 /up /dn 命令 |
 | 2026-02-25 | v1.0.0 | 初始化全局经验库 |
 
